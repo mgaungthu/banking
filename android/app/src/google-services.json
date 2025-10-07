@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "83931082922",
+    "project_id": "globiance-f9fc6",
+    "storage_bucket": "globiance-f9fc6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83931082922:android:427f7bde9be29ed9e6e0d3",
+        "android_client_info": {
+          "package_name": "com.solheaven.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "83931082922-83o3m8c6dd82vi31r37gc0ki47rg1trm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCZO85ZlbJC-uFiNP9Ixeh3CGJqjhzO5I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "83931082922-83o3m8c6dd82vi31r37gc0ki47rg1trm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

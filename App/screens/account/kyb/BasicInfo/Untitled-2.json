@@ -1,0 +1,73 @@
+https://uat.globiance.tech/api/v1/user/validate-kyb-step/0-to3
+
+
+businessiddocuments
+//First payload basic information
+{
+    "individual_business_role": "Director",
+    "name": "BAD BOY",
+    "registration_number": "22233",
+    "country_of_registration": "mm",
+    "date_of_registration": "2024-08-01T06:02:00.000Z",
+    "type_of_business": "solo trader",
+    "country_of_residence_of_major_ubo": "au",
+    "industry": 3
+}
+
+//second payload company documents
+
+{
+    "cert_incorporation_photo": "tmp_upload_6708bfd04d25e.jpg",
+    "register_of_officers_photo": "tmp_upload_6708bfd9be0d4.jpg",
+    "register_of_shareholders_photo": "tmp_upload_6708bfd744325.jpg",
+    "ubo_declaration_photo": "tmp_upload_6708bfdc86bcf.jpg",
+    "signed_minutes_photo": "tmp_upload_6708bfe151093.jpg",
+    "memorandum_and_articles_photo": "tmp_upload_6708bfd38d196.jpg"
+}
+
+
+//third payload license information
+
+{
+    "licensed": true,
+    "license_type": "dwdwa",
+    "license_number": "121313",
+    "license_comments": ""
+}
+
+//fourt payload contatc details
+
+{
+    "phone_1": "1234",
+    "phone_2": "3232",
+    "email": "joj@gmail.com"
+}
+
+//fifth payload confirmation
+
+
+{
+    "individual_business_role": "Director",
+    "name": "BAD BOY",
+    "registration_number": "22233",
+    "country_of_registration": "mm",
+    "date_of_registration": "2024-08-01T06:02:00.000Z",
+    "type_of_business": "solo trader",
+    "country_of_residence_of_major_ubo": "au",
+    "industry": 3,
+    "cert_incorporation_photo": "tmp_upload_6708bfd04d25e.jpg",
+    "register_of_officers_photo": "tmp_upload_6708bfd9be0d4.jpg",
+    "register_of_shareholders_photo": "tmp_upload_6708bfd744325.jpg",
+    "ubo_declaration_photo": "tmp_upload_6708bfdc86bcf.jpg",
+    "signed_minutes_photo": "tmp_upload_6708bfe151093.jpg",
+    "memorandum_and_articles_photo": "tmp_upload_6708bfd38d196.jpg",
+    "licensed": true,
+    "license_type": "dwdwa",
+    "license_number": "121313",
+    "license_comments": "",
+    "phone_1": "1234",
+    "phone_2": "3232",
+    "email": "joj@gmail.com",
+    "confirm_understanding": true,
+    "confirm_correct_data": false
+}

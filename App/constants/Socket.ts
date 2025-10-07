@@ -1,0 +1,3 @@
+export const THROTTLE_TICKER = 5000
+export const THROTTLE_BOOK = 2000
+export const THROTTLE_RECENT_TRADE = 5000

@@ -1,0 +1,17 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <!-- Background color -->
+    <item>
+        <color android:color="@color/sol" /> <!-- Your dark background -->
+    </item>
+
+    <!-- Centered logo image -->
+    <item
+        android:gravity="center">
+        <bitmap
+            android:src="@mipmap/ic_splash_logo"  
+            android:gravity="center"
+            android:antialias="true"/>
+    </item>
+
+</layer-list>

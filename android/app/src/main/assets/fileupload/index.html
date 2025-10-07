@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Upload with Fetch and Token</title>
+    <style>
+      .upload-area {
+        padding: 10px;
+        border: 2px dashed #ccc;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-family: Arial, sans-serif;
+        color: #888;
+        position: relative;
+        width: 300px;
+        height: 100px;
+        text-align: center;
+      }
+
+      .upload-area:hover {
+        background-color: #f0f0f0;
+        color: #555;
+      }
+
+      #fileInput {
+        display: none;
+      }
+
+      .remove-cross {
+        display: none;
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        font-size: 18px;
+        color: #f44336;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .remove-cross:hover {
+        color: #d32f2f;
+      }
+
+      .upload-message {
+        margin-top: 10px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="upload-area" id="uploadArea">
+      Click here to upload a file
+      <span class="remove-cross" id="removeCross">&times;</span>
+    </div>
+
+    <input type="file" id="fileInput" name="file" accept="*/*" />
+    <div class="upload-message" id="uploadMessage"></div>
+
+    <script>
+      const uploadArea = document.getElementById('uploadArea');
+      const fileInput = document.getElementById('fileInput');
+      const removeCross = document.getElementById('removeCross');
+
+      uploadArea.addEventListener('click', () => {
+        fileInput.click();
+      });
+
+      fileInput.addEventListener('change', event => {
+        const file = event.target.files[0];
+        if (file) {
+          const file = event.target.files[0];
+
+          uploadArea.textContent = file.name;
+          uploadArea.appendChild(removeCross); // Re-append the button to keep it visible
+          removeCross.style.display = 'inline-block';
+          handleFileUpload(file);
+          // window.ReactNativeWebView.postMessage(file.name);
+        }
+      });
+
+      removeCross.addEventListener('click', event => {
+        event.stopPropagation(); // Prevent triggering file selection when clicking remove
+        fileInput.value = ''; // Clear the file input value
+        uploadArea.textContent = 'Click here to upload a file';
+        removeCross.style.display = 'none'; // Hide remove button
+      });
+
+      const handleFileUpload = async file => {
+        const formData = new FormData();
+        formData.append('file', file); // Append the file to the form data
+
+        try {
+          const response = await fetch(
+            'https://uat.globiance.tech/api/v1/file/upload',
+            {
+              method: 'POST',
+              headers: {
+                Authorization:
+                  'Bearer ' +
+                  'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiNmVkZTY2Mzk0MjIxMjJjNzFiMjNkMmQ4MmNiODM5M2MzZTAzYjdjYTcyYTAzNjg1N2RjMGI4MjI1OTRhMmE5NTY4MDU4ZDAxOTg4YjEzZmQiLCJpYXQiOjE3Mjg0NTQ2ODYuNDA2NDY0LCJuYmYiOjE3Mjg0NTQ2ODYuNDA2NDY3LCJleHAiOjE3MjkwNTk0ODYuMjQyODM4LCJzdWIiOiIzMCIsInNjb3BlcyI6WyJtYW5hZ2Vfb3JkZXJzIl19.EY9ksBQbHDaTOcMLIzG7-z9j4-IvvicQJ1kmvFoR-KS7HKyh-ZSu90OjwIWUxC0r_DfsNh5juccNDngsbkYkPc79NAMLgUGrSYTHMGk7SRuHuovr5KYZ-BfzJ9Ac5uVlsz_RPoRUZ8ID1sYI9bzVHtCU6A28DmXUchwOtZaSThT5ku8XKJp8eR6G13rHeP52uOTaLIKPzJ--FzR_DpQBQWAO5h96pV43T3ChsFzoIydFVr4WioJIDG-7P43Yy-5o5wlkJSwM7ZTLFsWYZ9_iqm4whKF2f_GlzjBJv3I81o6f-184lXinmBkWhgrsWwTuuO7lBX2uLVigK6hzVGyyg6mutP7jQ308DsTsmLyIzJsK0fMhvUUg9OdqzdcbyaJqsPbchvM6fXSI7GLmyEGURYG7MmfZZCtZE_wm2m7-HoyN0aH254hK8mtDCgBtL7OmEOWJCxtWaUAVvHMsNxYEyVgUqk2TrdoriW3D47wITcvuT_HR9buFB61CHtx9U6MedHpqZtQi0ilpK46IVruHElm9z3vQuYQV1dcp6zeOcfIKc9q0rFpyJ5AVuPfL5Wk3hOYLDiWmbFz08EAENddB5ZnK5mRk2zEqoz8Yo9AEvt9t25SCgy3UtcAaExkYaFt2HOV_ePMNaMfYHI_Kgat5yOrLDWgAEEKaaVUmGsSFdXA', // Include the token in the headers
+              },
+              body: formData,
+            },
+          );
+
+          // window.ReactNativeWebView.postMessage(response);
+
+          // if (!response.ok) {
+          //     throw new Error(response.data);
+          // }
+          console.log(response);
+
+          const result = await response.json(); // Parse the JSON response
+
+          console.log('Upload Result:', result);
+        } catch (error) {
+          uploadMessage.textContent = 'Error uploading file:' + error.message;
+        }
+      };
+    </script>
+  </body>
+</html>
